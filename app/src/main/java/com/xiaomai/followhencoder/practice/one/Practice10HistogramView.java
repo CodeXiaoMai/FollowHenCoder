@@ -1,4 +1,4 @@
-package com.xiaomai.followhencoder.practice;
+package com.xiaomai.followhencoder.practice.one;
 
 import android.content.Context;
 import android.graphics.Canvas;

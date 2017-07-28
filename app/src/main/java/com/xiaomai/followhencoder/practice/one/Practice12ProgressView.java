@@ -1,4 +1,4 @@
-package com.xiaomai.followhencoder.practice;
+package com.xiaomai.followhencoder.practice.one;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,7 +11,6 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.xiaomai.followhencoder;
+package com.xiaomai.followhencoder.base;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+
+import com.xiaomai.followhencoder.R;
 
 /**
  * Created by XiaoMai on 2017/7/21.
