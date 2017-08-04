@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xiaomai.followhencoder.practice.one.PracticeOneActivity;
+import com.xiaomai.followhencoder.practice.three.PracticeThreeActivity;
 import com.xiaomai.followhencoder.practice.two.PracticeTwoActivity;
 
 import java.util.ArrayList;
@@ -28,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private List<Practice> mPracticeList = new ArrayList<>();
 
     {
-        mPracticeList.add(new Practice("练习二", PracticeTwoActivity.class));
-        mPracticeList.add(new Practice("练习一", PracticeOneActivity.class));
+        mPracticeList.add(new Practice("自定义 View 1-3 文字的绘制", PracticeThreeActivity.class));
+        mPracticeList.add(new Practice("自定义 View 1-2 Paint 详解", PracticeTwoActivity.class));
+        mPracticeList.add(new Practice("自定义 View 1-1 绘制基础", PracticeOneActivity.class));
     }
 
     @Override
