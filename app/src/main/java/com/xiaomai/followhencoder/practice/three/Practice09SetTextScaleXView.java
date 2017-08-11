@@ -3,6 +3,7 @@ package com.xiaomai.followhencoder.practice.three;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -42,5 +43,12 @@ public class Practice09SetTextScaleXView extends View {
 
         paint.setTextScaleX(0.5f);
         canvas.drawText(text, 50, 300, paint);
+
+        // 设置字符间距。默认值是 0。
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            paint.setLetterSpacing(1f);
+        }
+        canvas.drawText(text, 50, 400, paint);
     }
 }

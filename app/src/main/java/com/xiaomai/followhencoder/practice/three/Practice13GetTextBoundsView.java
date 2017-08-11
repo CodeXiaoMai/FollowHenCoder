@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class Practice13GetTextBoundsView extends View {
@@ -21,6 +22,7 @@ public class Practice13GetTextBoundsView extends View {
     int top = 200;
     int bottom = 400;
     int[] yOffsets = new int[6];
+    float[] xOffsets = new float[6];
 
     public Practice13GetTextBoundsView(Context context) {
         super(context);
@@ -40,43 +42,66 @@ public class Practice13GetTextBoundsView extends View {
         paint1.setColor(Color.parseColor("#E91E63"));
         paint2.setTextSize(160);
 
+        paint2.getTextWidths("AaJjÂâ", xOffsets);
+
         Rect textBounds = new Rect();
+        /**
+         * 调用 Paint.getTextBounds() 的方法后，textBounds 的原点是 baseline 的左边起点
+         * 所以textBounds.top 是负值，textBounds.bottom 是非负值
+         */
         paint2.getTextBounds(text1, 0, text1.length(), textBounds);
+        // 因为 (textBounds.top + textBounds.bottom) / 2 是 textBounds 的垂直方向的中点
+        // 如果中点的值为负值，说明中点在 baseline 的上面，反之说明中点在 baseline 的下面
+        // 现在的需求是所有的中点都在大的矩形框的中点处也就是默认的 baseline ，
+        // 所以现在要做的就是，根据每个不同的字符的中点相对于 baseline 的偏移做处理
         yOffsets[0] = -(textBounds.top + textBounds.bottom) / 2;
+
+        Log.e("textBounds", "top:" + textBounds.top + ",bottom:" + textBounds.bottom);
 
         paint2.getTextBounds(text2, 0, text2.length(), textBounds);
         yOffsets[1] = -(textBounds.top + textBounds.bottom) / 2;
+        Log.e("textBounds", "top:" + textBounds.top + ",bottom:" + textBounds.bottom);
 
         paint2.getTextBounds(text3, 0, text3.length(), textBounds);
         yOffsets[2] = -(textBounds.top + textBounds.bottom) / 2;
+        Log.e("textBounds", "top:" + textBounds.top + ",bottom:" + textBounds.bottom);
 
         paint2.getTextBounds(text4, 0, text4.length(), textBounds);
         yOffsets[3] = -(textBounds.top + textBounds.bottom) / 2;
+        Log.e("textBounds", "top:" + textBounds.top + ",bottom:" + textBounds.bottom);
 
         paint2.getTextBounds(text5, 0, text5.length(), textBounds);
         yOffsets[4] = -(textBounds.top + textBounds.bottom) / 2;
+        Log.e("textBounds", "top:" + textBounds.top + ",bottom:" + textBounds.bottom);
 
         paint2.getTextBounds(text6, 0, text6.length(), textBounds);
         yOffsets[5] = -(textBounds.top + textBounds.bottom) / 2;
+        Log.e("textBounds", "top:" + textBounds.top + ",bottom:" + textBounds.bottom);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawRect(50, top, getWidth() - 50, bottom, paint1);
+        canvas.drawRect(20, top, getWidth() - 20, bottom, paint1);
 
         // 使用 Paint.getTextBounds() 计算出文字的显示区域
         // 然后计算出文字的绘制位置，从而让文字上下居中
         // 这种居中算法的优点是，可以让文字精准地居中，分毫不差
 
         int middle = (top + bottom) / 2;
+        float x = (getWidth() - paint2.measureText("AaJjÂâ")) / 2;
 
-        canvas.drawText(text1, 100, middle + yOffsets[0], paint2);
-        canvas.drawText(text2, 200, middle + yOffsets[1], paint2);
-        canvas.drawText(text3, 300, middle + yOffsets[2], paint2);
-        canvas.drawText(text4, 400, middle + yOffsets[3], paint2);
-        canvas.drawText(text5, 500, middle + yOffsets[4], paint2);
-        canvas.drawText(text6, 600, middle + yOffsets[5], paint2);
+        canvas.drawText(text1, x, middle + yOffsets[0], paint2);
+        x += xOffsets[0];
+        canvas.drawText(text2, x, middle + yOffsets[1], paint2);
+        x += xOffsets[1];
+        canvas.drawText(text3, x, middle + yOffsets[2], paint2);
+        x += xOffsets[2];
+        canvas.drawText(text4, x, middle + yOffsets[3], paint2);
+        x += xOffsets[3];
+        canvas.drawText(text5, x, middle + yOffsets[4], paint2);
+        x += xOffsets[4];
+        canvas.drawText(text6, x, middle + yOffsets[5], paint2);
     }
 }
