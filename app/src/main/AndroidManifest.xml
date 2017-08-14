@@ -27,6 +27,9 @@
         <activity
             android:name=".practice.three.PracticeThreeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".practice.four.PracticeFourActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
