@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             public Holder(View itemView) {
                 super(itemView);
-                textView = itemView.findViewById(R.id.tv_name);
+                textView = (TextView) itemView.findViewById(R.id.tv_name);
             }
         }
     }
