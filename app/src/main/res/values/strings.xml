@@ -56,6 +56,7 @@
     <string name="title_matrix_scale">Matrix.scale()</string>
     <string name="title_matrix_rotate">Matrix.rotate()</string>
     <string name="title_matrix_skew">Matrix.skew()</string>
+    <string name="title_matrix_custom">Matrix.PolyToPoly()</string>
     <string name="title_camera_rotate">Camera.rotateX/Y()</string>
     <string name="title_camera_rotate_fixed">Camera.rotateX/Y() 修正版</string>
     <string name="title_camera_rotate_hitting_face">Camera.rotateX/Y() 糊脸修正</string>

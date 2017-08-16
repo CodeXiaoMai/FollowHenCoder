@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -12,22 +13,23 @@ import android.view.View;
 import com.xiaomai.followhencoder.R;
 
 /**
- * Created by XiaoMai on 2017/8/15.
+ * Created by XiaoMai on 2017/8/16.
  */
 
-public class Practice04ScaleView extends View {
+public class Practice08MatrixScaleView extends View {
     Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap mBitmap;
+    Matrix mMatrix = new Matrix();
 
-    public Practice04ScaleView(Context context) {
+    public Practice08MatrixScaleView(Context context) {
         super(context);
     }
 
-    public Practice04ScaleView(Context context, @Nullable AttributeSet attrs) {
+    public Practice08MatrixScaleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Practice04ScaleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public Practice08MatrixScaleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -40,13 +42,17 @@ public class Practice04ScaleView extends View {
         super.onDraw(canvas);
 
         canvas.save();
-        canvas.scale(1.5f, 1.5f);
-        canvas.drawBitmap(mBitmap, 20, 50, mPaint);
+        mMatrix.reset();
+        mMatrix.postScale(0.5f, 0.5f);
+        canvas.concat(mMatrix);
+        canvas.drawBitmap(mBitmap, 20, 20, mPaint);
         canvas.restore();
 
         canvas.save();
-        canvas.scale(0.6f, 1.2f);
-        canvas.drawBitmap(mBitmap, (20 + mBitmap.getWidth() + 20) / 0.6f + (mBitmap.getWidth() + 20) / 1.5f, 50, mPaint);
+        mMatrix.reset();
+        mMatrix.postScale(1.2f, 1.2f, 200 + mBitmap.getWidth() / 2, 200 + mBitmap.getHeight() / 2);
+        canvas.concat(mMatrix);
+        canvas.drawBitmap(mBitmap, 200, 200, mPaint);
         canvas.restore();
     }
 }
