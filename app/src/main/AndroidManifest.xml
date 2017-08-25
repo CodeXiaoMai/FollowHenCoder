@@ -30,6 +30,9 @@
         <activity
             android:name=".practice.four.PracticeFourActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".practice.five.PracticeFiveActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
