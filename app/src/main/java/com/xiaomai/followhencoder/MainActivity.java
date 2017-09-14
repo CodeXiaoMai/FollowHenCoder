@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.xiaomai.followhencoder.practice.five.PracticeFiveActivity;
 import com.xiaomai.followhencoder.practice.four.PracticeFourActivity;
 import com.xiaomai.followhencoder.practice.one.PracticeOneActivity;
+import com.xiaomai.followhencoder.practice.seven.PracticeSevenActivity;
 import com.xiaomai.followhencoder.practice.six.PracticeSixActivity;
 import com.xiaomai.followhencoder.practice.three.PracticeThreeActivity;
 import com.xiaomai.followhencoder.practice.two.PracticeTwoActivity;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Practice> mPracticeList = new ArrayList<>();
 
     {
+        mPracticeList.add(new Practice("自定义 View 1-7 属性动画（下）", PracticeSevenActivity.class));
         mPracticeList.add(new Practice("自定义 View 1-6 属性动画（上）", PracticeSixActivity.class));
         mPracticeList.add(new Practice("自定义 View 1-5 绘制顺序", PracticeFiveActivity.class));
         mPracticeList.add(new Practice("自定义 View 1-4 Canvas 对绘制的辅助", PracticeFourActivity.class));

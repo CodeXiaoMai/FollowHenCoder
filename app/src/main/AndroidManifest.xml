@@ -36,6 +36,9 @@
         <activity
             android:name=".practice.six.PracticeSixActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".practice.seven.PracticeSevenActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
