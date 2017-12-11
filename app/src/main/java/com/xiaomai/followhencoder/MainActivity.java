@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.xiaomai.followhencoder.practice.eight.PracticeEightActivity;
 import com.xiaomai.followhencoder.practice.five.PracticeFiveActivity;
 import com.xiaomai.followhencoder.practice.four.PracticeFourActivity;
 import com.xiaomai.followhencoder.practice.one.PracticeOneActivity;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Practice> mPracticeList = new ArrayList<>();
 
     {
+        mPracticeList.add(new Practice("自定义 View 2-1 布局基础", PracticeEightActivity.class));
         mPracticeList.add(new Practice("自定义 View 1-7 属性动画（下）", PracticeSevenActivity.class));
         mPracticeList.add(new Practice("自定义 View 1-6 属性动画（上）", PracticeSixActivity.class));
         mPracticeList.add(new Practice("自定义 View 1-5 绘制顺序", PracticeFiveActivity.class));
